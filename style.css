@@ -1,0 +1,75 @@
+*{
+    font-family:inherit;
+    font-size:inherit;
+    line-height:inherit;    /* inheritで継承 */
+}
+
+body{
+    font-size:32px;
+}
+
+.mb-20{
+    margin-bottom:20px;
+}
+
+.container{             /* containerクラスの設定 */
+    width:400px;        /* widthの幅設定 */
+    margin:0 auto;      /* game全体を中央に配置 */
+    text-align:center;  /* 各要素を中央に配置 */
+}
+
+.title{
+    position:relative;
+    font-size:48px;
+}
+
+.marker{                            /* タイトル部分マーカーの設定 */
+    width:100%;
+    height:35%;
+    background-color: #ff00ff;
+    position:absolute;              /* マーカーを文字の上にどのように引くか設定 */
+    bottom:5%;                      /* マーカーを文字の上にどのように引くか設定 */
+    z-index:-1;                     /* マーカーを文字の上にどのように引くか設定 */
+}
+
+.startButton{                       /* スタートボタンの設定 */
+    background-color:#008000;
+    color:white;
+    padding:4px 60px;
+    border:none;
+    outline:none;
+    border-radius:8px;
+    cursor:pointer;                 /* マウスがボタンに乗ったらカーソルをポインタにする */
+}
+
+.startButton:hover{                 /* マウスがホバーした時の設定 */
+    opacity:0.7;                    /* 色が薄くなる */
+}
+
+.question{
+    color:black;
+}
+
+.clear{
+    color:#03a9f4;
+}
+
+.typeForm{
+    text-align:center;              /* 入力カーソルを中央に配置 */
+    outline:none;
+    border:none;
+}
+
+.typeFormWrapper{
+    border-bottom:1px solid gray;           /* タイピングボックスを下線だけにする */
+}
+
+.gauge{
+    height:12px;
+    transition:all .5s ease;
+}
+
+.gaugeWrapper{
+    border:1px solid;
+    height:12px;
+}
