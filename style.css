@@ -20,20 +20,21 @@ body{
 
 .title{
     position:relative;
-    font-size:48px;
+    font-size:48px;      /* タイトルのフォント設定 */
+    color:aquamarine;
 }
 
 .marker{                            /* タイトル部分マーカーの設定 */
     width:100%;
     height:35%;
-    background-color: #ff00ff;
+    background-color: #ffb2d8;
     position:absolute;              /* マーカーを文字の上にどのように引くか設定 */
     bottom:5%;                      /* マーカーを文字の上にどのように引くか設定 */
     z-index:-1;                     /* マーカーを文字の上にどのように引くか設定 */
 }
 
 .startButton{                       /* スタートボタンの設定 */
-    background-color:#008000;
+    background-color:#8eff8e;
     color:white;
     padding:4px 60px;
     border:none;
@@ -47,7 +48,7 @@ body{
 }
 
 .question{
-    color:black;
+    color:#c184ff;
 }
 
 .clear{
