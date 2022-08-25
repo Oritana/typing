@@ -21,11 +21,11 @@
         <button v-if="startFlg!=true" class="startButton mb-20" @click="gameStart">START</button>  <!-- スタートボタンの作成 ※mb-20はマージンボトム20の略  @clickはstartボタンをクリックするとゲーム開始する-->
         <div v-if="startFlg">
             <div class="question mb-20">{{ current_question }}</div>                               <!-- 一問目の文字を設定 -->         
-            <div v-if="current_question_counts ==question_counts" class="clear">Clear!</div>       <!-- クリアボタン作成 -->
+            <div v-if="current_question_counts ==question_counts" class="clear">Clear!</div>       <!-- クリアボタン作成 　current_question_counts ==question_counts の数が一致した場合にClearを表示-->
             <div class="typeFormWrapper mb-20">
                 <input id="typeForm" v-model="typeBox" type="text" class="typeForm">               <!-- タイピング用のボックスを作成 -->
             </div>     
-
+            <!-- 問題数ごとに増えるゲージを作成 -->
             <div class="gaugeWrapper mb-20">
                 <div v-bind:style="styleObject" class="gauge"></div>   <!-- 正解によって増えていくゲージを作成 -->
             </div>
@@ -51,17 +51,17 @@
                     '学校',
                     '休日出勤',
                 ],
-                typeBox:"",
+                typeBox:"",                  /* 26行目のtypeBoxと連動する */
                 current_question_counts:0,   /* 分子 */
                 question_counts:0            /* 分母 */
             },
-            computed:{
-                styleObject:function(){                                 /*  */
-                    width = 10 * this.current_question_counts + "%"     /*  */
-                    if(this.current_question_counts == 10){
-                        color = "#03a9f4"
+            computed:{                      /* 30行目のstyleObjectをデータとして定義 */
+                styleObject:function(){                                 /* computedの場合functionで返す */
+                    width = 10 * this.current_question_counts + "%"     /* ゲージの長さ計算→全部で10問なので10問いった時に100%になるようにする */
+                    if(this.current_question_counts == 10){             /* 1問→10*1=10% 2問→10*2=20%... */
+                        color = "#03a9f4"                               /* 10問正解したらゲージを水色表示 */
                     }else{
-                        color = "orange"
+                        color = "orange"                                /* それまではオレンジ色 */
                     }
                     return{
                         'width':width,
@@ -72,20 +72,21 @@
             methods:{
                 gameStart:function(){        /* gameStartという関数名を設定 */
                     this.startFlg = true;    /* ゲームスタートは20行目@clickで定義 */
-                    this.$nextTick(function(){
+                    this.$nextTick(function(){                          /* $nextTickはスタートボタン押したタイミングでカーソルが下線上に表示されるようにする */
                         document.getElementById('typeForm').focus()
                     })
                 }
             },
-            mounted:function(){                             /* 描画？された時点で実行される */
+            /* 配列の中身が41行目のcurrent_question:"" に入るように定義する */
+            mounted:function(){                             /* 描画された時点で実行される */
                 this.current_question = this.questions[0]   /* 配列の1つ目は[0]番目 */
                 this.question_counts = this.questions.length
             },
-            watch:{
+            watch:{                                                 /* 入力値によって判定 */
                 typeBox:function(e){
                     if(e == this.current_question){
-                        this.questions.splice(0,1)
-                        this.current_question=this.questions[0]
+                        this.questions.splice(0,1)                  /* 一致したら表示されている配列の項目を削除 */
+                        this.current_question=this.questions[0]     /* 次の項目を再定義(表示) */
                         this.typeBox=""
                         this.current_question_counts = this.current_question_counts + 1
                     }

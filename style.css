@@ -67,7 +67,7 @@ body{
 
 .gauge{
     height:12px;
-    transition:all .5s ease;
+    transition:all .5s ease;        /* 0.5秒ずつ色が変化する */
 }
 
 .gaugeWrapper{
