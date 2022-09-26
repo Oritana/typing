@@ -38,11 +38,16 @@
                 startFlg:"",          /* 変数の定義 Flgはゲームが開始しているかどうかの判定に使う */
                 current_question:"",  /* 今現在の問題 */   
                 questions:[           /* 配列questionsを作成→current_questionに入るようになる */
-                    'apple',
-                    'banana',
-                    'chocolate',
-                    'dounut',
-                    'espresso',
+                    '動物園に行って',    
+                    'どうしても会いたい',
+                    'イケメンすぎるゴリラ',
+                    '名前はジャバーニ',
+                    '渋すぎる佇まい',
+                    'ゴリラとは思えないほどの端正な顔立ち',
+                    '',
+                    '',
+                    '',
+                    '女性に大人気',
                 ],
                 typeBox:"",
                 current_question_counts:0,   /* 分子 */
@@ -51,10 +56,10 @@
             computed:{
                 styleObject:function(){
                     width = 20 * this.current_question_counts + "%"
-                    if(this.current_question_counts == 5){
-                        color = "#03a9f4"
+                    if(this.current_question_counts == 10){
+                        color = "#99ffcc"                   //ゲージ推移の色設定
                     }else{
-                        color = "orange"
+                        color = "#ff7f7f"                   //全部クリアした時のゲージの色設定
                     }
                     return{
                         'width':width,
