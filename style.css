@@ -6,6 +6,12 @@
 
 body{
     font-size:32px;
+    background-image:url("image/jungle.png");
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    background-repeat:no-repeat;
 }
 
 .mb-20{
@@ -26,15 +32,15 @@ body{
 .marker{                            /* タイトル部分マーカーの設定 */
     width:100%;
     height:35%;
-    background-color: #ff00ff;
+    background-color: #9c5e31;
     position:absolute;              /* マーカーを文字の上にどのように引くか設定 */
     bottom:5%;                      /* マーカーを文字の上にどのように引くか設定 */
     z-index:-1;                     /* マーカーを文字の上にどのように引くか設定 */
 }
 
 .startButton{                       /* スタートボタンの設定 */
-    background-color:#008000;
-    color:white;
+    background-color:#9acd32;
+    color:#8b4513;
     padding:4px 60px;
     border:none;
     outline:none;
@@ -47,11 +53,11 @@ body{
 }
 
 .question{
-    color:black;
+    color:#808000;
 }
 
 .clear{
-    color:#03a9f4;
+    color:#0000ff;
 }
 
 .typeForm{

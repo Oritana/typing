@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>  <!-- Vue.js読み込み -->
 </head>
 
 <body>
@@ -15,8 +15,8 @@
             <h1>Typing Game</h1>            <!-- タイトル -->
             <div class="marker"></div>      <!-- 中身は空 -->
         </div>
-
-        <!-- 問題部分を作成 -->  <!-- ↓startButtonがtrueでなければ、startボタンを表示する -->
+        
+        <!-- 問題部分を作成 -->  <!-- ↓ v-ifでstartButtonがtrueでなければ、startボタンを表示する条件によって表示 -->
         <button v-if="startFlg!=true" class="startButton mb-20" @click="gameStart">START</button>  <!-- スタートボタンの作成 ※mb-20はマージンボトム20の略  @clickはstartボタンをクリックするとゲーム開始する-->
         <div v-if="startFlg">
             <div class="question mb-20">{{ current_question }}</div>                               <!-- 一問目の文字を設定 -->         
@@ -32,34 +32,35 @@
         </div>
     </div> 
     <script>
-        new Vue({                     /* vue.jsの設定 */
-            el:"#app",                /* appの範囲をvue.jsにするよ */
-            data:{                    /* データの定義 */
-                startFlg:"",          /* 変数の定義 Flgはゲームが開始しているかどうかの判定に使う */
-                current_question:"",  /* 今現在の問題 */   
-                questions:[           /* 配列questionsを作成→current_questionに入るようになる */
+        new Vue({                               //vue.jsの設定
+            el:"#app",                          //appの範囲をvue.jsにするよ
+            data:{                              //データの定義
+                startFlg:"",                    //変数の定義 Flgはゲームが開始しているかどうかの判定に使う
+                current_question:"",            //今現在の問題 */   
+                questions:[                     //配列questionsを作成→current_questionに入るようになる
                     '動物園に行って',    
                     'どうしても会いたい',
                     'イケメンすぎるゴリラ',
-                    '名前はジャバーニ',
-                    '渋すぎる佇まい',
-                    'ゴリラとは思えないほどの端正な顔立ち',
-                    '',
-                    '',
-                    '',
-                    '女性に大人気',
+                    '名前はシャバーニ',
+                    '渋すぎるたたずまい',
+                    'ゴリラとは思えないほど',
+                    '端正な顔立ち',
+                    '場所は名古屋の',
+                    '東山動植物園',
+                    '女性に大人気'
                 ],
-                typeBox:"",
-                current_question_counts:0,   /* 分子 */
-                question_counts:0            /* 分母 */
+                typeBox:"",                   //タイピングエリア
+                current_question_counts:0,    //分子
+                question_counts:0             //分母
             },
             computed:{
                 styleObject:function(){
-                    width = 20 * this.current_question_counts + "%"
+                    //現在正解している "カウント数×10" で、10問正解したときに100%になるように設定
+                    width = 10 * this.current_question_counts + "%"
                     if(this.current_question_counts == 10){
-                        color = "#99ffcc"                   //ゲージ推移の色設定
+                        color = "#0000ff"                    //全部クリアした時のゲージの色設定
                     }else{
-                        color = "#ff7f7f"                   //全部クリアした時のゲージの色設定
+                        color = "#006400"                    //ゲージ推移の色設定
                     }
                     return{
                         'width':width,
@@ -68,18 +69,18 @@
                 }
             },
             methods:{
-                gameStart:function(){        /* gameStartという関数名を設定 */
-                    this.startFlg = true;   /* ゲームスタートは20行目@clickで定義 */
+                gameStart:function(){             //gameStartという関数名を設定
+                    this.startFlg = true;         //ゲームスタートは20行目@clickで定義
                     this.$nextTick(function(){
                         document.getElementById('typeForm').focus()
                     })
                 }
             },
-            mounted:function(){                             /* 描画？された時点で実行される */
-                this.current_question = this.questions[0]   /* 配列の1つ目は[0]番目 */
+            mounted:function(){                               //描画？された時点で実行される
+                this.current_question = this.questions[0]     //配列の1つ目は[0]番目
                 this.question_counts = this.questions.length
             },
-            watch:{
+            watch:{                                           //watch(監視プロパティ)でデータの変化を監視する
                 typeBox:function(e){
                     if(e == this.current_question){
                         this.questions.splice(0,1)
