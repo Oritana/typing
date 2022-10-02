@@ -1,7 +1,7 @@
 *{
-    font-family:inherit;
-    font-size:inherit;
-    line-height:inherit;    /* inheritで継承 */
+    font-family:"Nico Moji";    /*  フォントデザイン指定*/
+    font-size:inherit;          /* フォントサイズ:inheritで親要素から継承 */
+    line-height:inherit;        /* 行ボックスの高さ:inheritで親要素から継承 */
 }
 
 body{
@@ -19,15 +19,15 @@ body{
 }
 
 .container{             /* containerクラスの設定 */
-    width:400px;        /* widthの幅設定 */
+    width:400px;        /* ゲームの幅をwidthで設定 */
     margin:0 auto;      /* game全体を中央に配置 */
     text-align:center;  /* 各要素を中央に配置 */
 }
 
 .title{
-    position:relative;
+    position:relative;  
     font-size:48px;
-}
+    }
 
 .marker{                            /* タイトル部分マーカーの設定 */
     width:100%;
@@ -38,44 +38,71 @@ body{
     z-index:-1;                     /* マーカーを文字の上にどのように引くか設定 */
 }
 
-.startButton{                       /* スタートボタンの設定 */
-    background-color:#9acd32;
-    color:#8b4513;
-    padding:4px 60px;
-    border:none;
-    outline:none;
-    border-radius:8px;
-    cursor:pointer;                 /* マウスがボタンに乗ったらカーソルをポインタにする */
+.startButton{                               /* スタートボタンの設定 */
+    display: block;
+    position: relative;
+    width: 80%;                             /*ボタンの幅*/
+    padding: 10px 0;
+    margin: 30px auto;
+    background-color: #9acd32;            /*ボタンの色*/
+    box-shadow: 0 3px 0 0 #006400;        /*影の色(rgbaの値を変更)*/
+    border-radius: 5px;                     /* ボタンの角に丸みを設定 */
+    font-weight: bold;
+    font-size: 18px;
+    color: #8b4513;                        /* ボタン内の文字の色設定 */
+    text-align: center;
+    text-decoration: none;
+    overflow: hidden;
+    cursor:pointer;                         /* マウスがボタンに乗ったらカーソルをポインタにする */
 }
 
-.startButton:hover{                 /* マウスがホバーした時の設定 */
-    opacity:0.7;                    /* 色が薄くなる */
+.startButton:hover{                         /* マウスがホバーした時の設定 */
+    opacity:0.7;                            /* 色が薄くなる */
+    text-decoration: none;
+    color: #fff;
+    box-shadow: none;
 }
 
 .question{
-    color:#808000;
+    color:#808000;                      /* タイピングで出題される文字色の設定 */
 }
 
 .clear{
-    color:#0000ff;
+    color:#0000ff;                      /* ゲームクリアしたときClear!表示の文字色 */
 }
 
 .typeForm{
-    text-align:center;              /* 入力カーソルを中央に配置 */
-    outline:none;
-    border:none;
+    text-align:center;                     /* 入力カーソルを中央に配置 */
+    outline:none;                          /* 入力フォームの外枠を消す */
+    border:none;                           /* 入力フォームの外枠を消す */
 }
 
 .typeFormWrapper{
-    border-bottom:1px solid gray;           /* タイピングボックスを下線だけにする */
+    border-bottom:1px solid #9acd32;     /* タイピングボックスを下線だけにする */
 }
 
 .gauge{
-    height:12px;
-    transition:all .5s ease;
+    height:12px;                           /* 高さの設定 */
+    transition:all .5s ease;               /* easeでゲージの増加スピード設定／ 0.5秒かけて変化する*/
 }
 
-.gaugeWrapper{
-    border:1px solid;
+.gaugeWrapper{                              /* ゲージの設定 */
+    border:1px solid;               
     height:12px;
+}
+
+.typingimage{                               /* もっとタイピングを練習する(外部リンク)画像を設定 */
+    width:300px;
+    height:250px;
+    text-align:center;
+}
+
+.typingimage:hover{                         /* もっとタイピングを練習する(外部リンク)にマウスをのせると白くなる */
+    opacity:0.5;
+}
+
+.footer{                               /* もっとタイピングを練習する(外部リンク)画像を設定 */
+    width:400px;
+    height:270px;
+    text-align:center;
 }

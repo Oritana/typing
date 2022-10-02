@@ -4,40 +4,85 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Typing Game</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>  <!-- Vue.js読み込み -->
+    <!-- にこもじの読み込み -->
+    <link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet">
+    <!-- Vue.js読み込み -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>  
 </head>
 
 <body>
-    <div id="app" class="container">        <!-- 全体を囲う部分にcontainerクラスを設定 -->
-        <div class="title">                 <!-- タイトル部分 -->     
-            <h1>Typing Game</h1>            <!-- タイトル -->
-            <div class="marker"></div>      <!-- 中身は空 -->
+    <div id="app" >                         <!-- Vue.jsとつなげる要素 -->
+        <div class="container">             <!-- 全体を囲う部分にcontainerクラスを設定 -->
+        <div class="title">                 <!-- タイトル部分 -->  
+            <!-- タイトル文字<marquee>で右から左へ文字が移動 -->
+            <marquee direction="left"><h1>Typing Game</h1></marquee direction="left">  
+            <div class="marker"></div>      <!-- タイトルの下のマーカーを設定／中身は空 -->
         </div>
         
         <!-- 問題部分を作成 -->  <!-- ↓ v-ifでstartButtonがtrueでなければ、startボタンを表示する条件によって表示 -->
-        <button v-if="startFlg!=true" class="startButton mb-20" @click="gameStart">START</button>  <!-- スタートボタンの作成 ※mb-20はマージンボトム20の略  @clickはstartボタンをクリックするとゲーム開始する-->
-        <div v-if="startFlg">
+        <!-- スタートボタンの作成 ※mb-20はマージンボトム20の略(スタートボタンの下に余白を持たせる)  -->
+        <!-- v-on:でボタンをクリックするとゲーム開始する -->
+            <button v-if="startFlg!=true" class="startButton mb-20" v-on:click="gameStart">START</button>
+            <!-- v-ifのstartFlg ゲームが開始しているか？ startFlgがtrueの時だけ問題文が表示される -->
+            <div v-if="startFlg">
             <div class="question mb-20">{{ current_question }}</div>                               <!-- 一問目の文字を設定 -->         
-            <div v-if="current_question_counts ==question_counts" class="clear">Clear!</div>       <!-- クリアボタン作成 -->
+            <div v-if="current_question_counts == question_counts" class="clear">Clear!</div>       <!-- v-ifで分子と分母の数が一致したらClear!を表示する -->
+            <!-- タイピング用のボックスを作成 -->
             <div class="typeFormWrapper mb-20">
-                <input id="typeForm" v-model="typeBox" type="text" class="typeForm">               <!-- タイピング用のボックスを作成 -->
+                <!-- 入力されると93行目と連動してinputの値がquestionと一致するか130行目のwatchでチェック -->         
+                <input id="typeForm" v-model="typeBox" type="text" class="typeForm">      <!-- input id="typeForm"でカーソルの最初の位置を設定 → 117行目$nextTick -->
             </div>     
 
+            <!-- 正解によって増えていくゲージを作成 ※mb-20はマージンボトム20の略(タイピング用ボックスの下に余白を持たせる)-->
             <div class="gaugeWrapper mb-20">
-                <div v-bind:style="styleObject" class="gauge"></div>   <!-- 正解によって増えていくゲージを作成 -->
+                <div v-bind:style="styleObject" class="gauge"></div>   <!-- v-bindでstyle変更/変数styleObjectを98行目computedでデータとして定義 -->
             </div>
             <div>{{current_question_counts}}/{{question_counts}}</div>  <!-- 正答数 -->
         </div>
-    </div> 
+        </div>
+        <!-- もっとタイピング練習する(外部サイト) -->
+        <div class="typingimage" style="display: block; margin-left: auto; margin-right: auto;">
+            <!-- v-bindで画像を表示させaタグで外部サイトへのリンク先を貼付 -->
+            <a href="https://www.e-typing.ne.jp/" target="_blank"><img v-bind:src="imageName" ></img></a>
+        </div>
+        <!-- footer -->
+        <div class="footer" style="display: block; margin-left: auto; margin-right: auto;">
+            <!-- v-bindでページ下部に画像を表示 右から左にスライドして表示-->
+        <marquee direction="left">
+        <img v-bind:src="fileName1"></img>
+        <img v-bind:src="fileName2"></img>
+        <img v-bind:src="fileName3"></img>
+        <img v-bind:src="fileName4"></img>
+        <img v-bind:src="fileName5"></img>
+        <img v-bind:src="fileName6"></img>
+        <img v-bind:src="fileName7"></img>
+        <img v-bind:src="fileName8"></img>
+        <img v-bind:src="fileName9"></img>
+        <img v-bind:src="fileName10"></img>
+        </marquee direction="left">
+        </div>
+        </div>
+
     <script>
-        new Vue({                               //vue.jsの設定
-            el:"#app",                          //appの範囲をvue.jsにするよ
-            data:{                              //データの定義
-                startFlg:"",                    //変数の定義 Flgはゲームが開始しているかどうかの判定に使う
-                current_question:"",            //今現在の問題 */   
-                questions:[                     //配列questionsを作成→current_questionに入るようになる
+        new Vue({                                       //vue.js(Vueインスタンス)の設定
+            el:"#app",                                  //elはエレメントの略／appの範囲をvue.jsにする
+            data:{                                      //データの定義
+                fileName1:'image/zoo.png',              //ページ下部にスライドで画像を表示
+                fileName2:'image/koi.png',
+                fileName3:'image/think.png',
+                fileName4:'image/ikemen2.png',
+                fileName5:'image/ikemen1.png',
+                fileName6:'image/koduck.png',
+                fileName7:'image/ikemen3.png',
+                fileName8:'image/nagoya.png',
+                fileName9:'image/higashi.png',
+                fileName10:'image/otaku.png',
+                imageName:'image/typing.png',            //もっとタイピング練習する(外部サイト)
+                startFlg:"",                            //変数の定義 Flgはゲームが開始しているかどうかの判定に使う／初期値は空
+                current_question:"",                    //今現在の問題　初期値は空でquestions配列から問題を一つずつ取り出して表示 */   
+                questions:[                             //配列questionsからcurrent_questionに入るように →　124行目のmountedで実行する
                     '動物園に行って',    
                     'どうしても会いたい',
                     'イケメンすぎるゴリラ',
@@ -49,48 +94,59 @@
                     '東山動植物園',
                     '女性に大人気'
                 ],
-                typeBox:"",                   //タイピングエリア
-                current_question_counts:0,    //分子
-                question_counts:0             //分母
+                typeBox:"",                   //inputの値をデータで管理／初期値は空
+                current_question_counts:0,    //正解数/分子 初期状態は0 ／140行目で定義する
+                question_counts:0             //問題数/分母 初期状態は0 ／126行目mountedで分母数を取得しておく
             },
+            //正解によって増えていくゲージ computedでデータの値を計算
             computed:{
                 styleObject:function(){
                     //現在正解している "カウント数×10" で、10問正解したときに100%になるように設定
-                    width = 10 * this.current_question_counts + "%"
-                    if(this.current_question_counts == 10){
-                        color = "#0000ff"                    //全部クリアした時のゲージの色設定
+                    width = 10 * this.current_question_counts + "%"  //ゲージの横幅を設定
+                    if(this.current_question_counts == 10){          //全部で10問正解した場合
+                        color = "#0000ff"                            //全部クリアした時のゲージの色設定
                     }else{
-                        color = "#006400"                    //ゲージ推移の色設定
+                        color = "#006400"                            //まだ全部クリアしていない場合のゲージ推移の色設定
                     }
-                    return{
-                        'width':width,
-                        'background-color':color
+                    return{                                          //computedでは必ず値をreturnする必要がある(objectなので2つ返す)
+                        'width':width,                               //変数widthに返す
+                        'background-color':color                     //colorに返す
                     }
                 }
             },
+            //命令文(methodsオプション) STARTボタンが押されたらボタンは消える
             methods:{
                 gameStart:function(){             //gameStartという関数名を設定
-                    this.startFlg = true;         //ゲームスタートは20行目@clickで定義
-                    this.$nextTick(function(){
-                        document.getElementById('typeForm').focus()
-                    })
+                    this.startFlg = true;         //STARTボタンをクリック　→ startFlgがtrueになる／35行目のv-ifが条件を満たさなくなるのでSTARTボタンが非表示となる
+                    this.$nextTick(function(){    //$nextTickはカーソルの位置を設定する
+                        document.getElementById('typeForm').focus()  //('typeForm'には'#'つけない)
+                    })         //getElementByIdは、任意のHTMLタグで指定したIDにマッチするドキュメント要素を取得するメソッド
                 }
             },
-            mounted:function(){                               //描画？された時点で実行される
-                this.current_question = this.questions[0]     //配列の1つ目は[0]番目
-                this.question_counts = this.questions.length
+            //インスタンスがマウントされた後に実行する処理
+            //DOM要素へのアクセスが可能
+            mounted:function(){                               //DOMが読み込まれた時点で実行される
+                this.current_question = this.questions[0]     //配列questions[0]番目(1つ目)からcrrent_questionに取り出す
+                this.question_counts = this.questions.length    //問題の分母数を取得しておく →　配列は消えるがmountedの段階で取得しているため数は変動しない
             },
-            watch:{                                           //watch(監視プロパティ)でデータの変化を監視する
-                typeBox:function(e){
-                    if(e == this.current_question){
-                        this.questions.splice(0,1)
-                        this.current_question=this.questions[0]
-                        this.typeBox=""
-                        this.current_question_counts = this.current_question_counts + 1
+            //watch(監視プロパティ)でデータ(typeBoxの中身)の変化を監視する
+            //指定した変数(current_question)が更新されるたびに実行される処理
+            watch:{     
+                //function(e) → イベントハンドラーやイベントリスナーに渡される eventオブジェクトの略(引数)
+                //typeBoxの値が変わるたびにfunctionが走る
+                typeBox:function(e){         
+                    //文字が打ち込まれるたびにcurrent_questionと41行目のv-modelのtypeBoxに入力された文字が一致するか判定
+                    //typeBoxに入力された文字を引数(e)で取る                
+                    if(e == this.current_question){               //入力された値(e)が"current_question"と一致しているか
+                        this.questions.splice(0,1)                //(e)とcurrent_questionが一致していたら、spliceで配列questionsのデータを削除していく
+                        this.current_question=this.questions[0]   //配列questionsが1つ消えたタイミングで、current_questionに配列questionの[0]番目を再定義する
+                        this.typeBox=""                           //入力された値(e)が"current_question"と一致した時点でtypeBoxは空にする
+                        this.current_question_counts = this.current_question_counts + 1   //問題に正解するたびに正解数の分子を1ずつ増やす　48行目に記述
                     }
                 }
             }
         })
+
     </script>
 </body>
 </html>
