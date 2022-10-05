@@ -9,47 +9,59 @@
     <!-- にこもじの読み込み -->
     <link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet">
     <!-- Vue.js読み込み -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>  
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 </head>
 
 <body>
     <div id="app" >                         <!-- Vue.jsとつなげる要素 -->
         <div class="container">             <!-- 全体を囲う部分にcontainerクラスを設定 -->
+        <p class="apple1"><img src="image/apple.png"  /></p>      <!-- 背景画像の上でイラスをを落下させる -->
+        <p class="apple2"><img src="image/apple.png"  /></p>
+        <p class="banana1"><img src="image/banana.png"  /></p>
+        <p class="banana2"><img src="image/banana.png"  /></p>
+        <p class="leaf1"><img src="image/leaf1.png"  /></p>
+        <p class="leaf2"><img src="image/leaf1.png"  /></p>
+        <p class="leaf3"><img src="image/leaf2.png"  /></p>
+        <p class="leaf4"><img src="image/leaf2.png"  /></p>
+        <p class="leaf5"><img src="image/leaf1.png"  /></p>
+        <p class="leaf6"><img src="image/leaf2.png"  /></p>
+        <p class="momonga"><img src="image/momonga.png"  /></p>
         <div class="title">                 <!-- タイトル部分 -->  
             <!-- タイトル文字<marquee>で右から左へ文字が移動 -->
-            <marquee direction="left"><h1>Typing Game</h1></marquee direction="left">  
+            <p class="text">Typing Game</p>
             <div class="marker"></div>      <!-- タイトルの下のマーカーを設定／中身は空 -->
         </div>
-        
         <!-- 問題部分を作成 -->  <!-- ↓ v-ifでstartButtonがtrueでなければ、startボタンを表示する条件によって表示 -->
         <!-- スタートボタンの作成 ※mb-20はマージンボトム20の略(スタートボタンの下に余白を持たせる)  -->
         <!-- v-on:でボタンをクリックするとゲーム開始する -->
             <button v-if="startFlg!=true" class="startButton mb-20" v-on:click="gameStart">START</button>
             <!-- v-ifのstartFlg ゲームが開始しているか？ startFlgがtrueの時だけ問題文が表示される -->
             <div v-if="startFlg">
-            <div class="question mb-20">{{ current_question }}</div>                               <!-- 一問目の文字を設定 -->         
+            <div class="question mb-20">{{ current_question }}</div>                                <!-- 一問目の文字を設定 -->         
             <div v-if="current_question_counts == question_counts" class="clear">Clear!</div>       <!-- v-ifで分子と分母の数が一致したらClear!を表示する -->
             <!-- タイピング用のボックスを作成 -->
             <div class="typeFormWrapper mb-20">
-                <!-- 入力されると93行目と連動してinputの値がquestionと一致するか130行目のwatchでチェック -->         
+                <!-- 入力されると98行目と連動してinputの値がquestionと一致するか135行目のwatchでチェック -->         
                 <input id="typeForm" v-model="typeBox" type="text" class="typeForm">      <!-- input id="typeForm"でカーソルの最初の位置を設定 → 117行目$nextTick -->
             </div>     
 
             <!-- 正解によって増えていくゲージを作成 ※mb-20はマージンボトム20の略(タイピング用ボックスの下に余白を持たせる)-->
             <div class="gaugeWrapper mb-20">
-                <div v-bind:style="styleObject" class="gauge"></div>   <!-- v-bindでstyle変更/変数styleObjectを98行目computedでデータとして定義 -->
+                <div v-bind:style="styleObject" class="gauge"></div>   <!-- v-bindでstyle変更/変数styleObjectを103行目computedでデータとして定義 -->
             </div>
             <div>{{current_question_counts}}/{{question_counts}}</div>  <!-- 正答数 -->
         </div>
         </div>
+
         <!-- もっとタイピング練習する(外部サイト) -->
         <div class="typingimage" style="display: block; margin-left: auto; margin-right: auto;">
             <!-- v-bindで画像を表示させaタグで外部サイトへのリンク先を貼付 -->
             <a href="https://www.e-typing.ne.jp/" target="_blank"><img v-bind:src="imageName" ></img></a>
         </div>
+
         <!-- footer -->
         <div class="footer" style="display: block; margin-left: auto; margin-right: auto;">
-            <!-- v-bindでページ下部に画像を表示 右から左にスライドして表示-->
+        <!-- v-bindでページ下部に画像を表示 右から左にスライドして表示-->
         <marquee direction="left">
         <img v-bind:src="fileName1"></img>
         <img v-bind:src="fileName2"></img>
@@ -61,9 +73,14 @@
         <img v-bind:src="fileName8"></img>
         <img v-bind:src="fileName9"></img>
         <img v-bind:src="fileName10"></img>
+        <p class="leaf5"><img src="image/leaf1.png" alt="" /></p>
+        <p class="leaf6"><img src="image/leaf1.png" alt="" /></p>
+        <p class="leaf7"><img src="image/leaf2.png" alt="" /></p>
+        <p class="leaf8"><img src="image/leaf2.png" alt="" /></p>
         </marquee direction="left">
+        <a v-bind:href="myURL" target="_blank">I miss シャバーニ</a><a href="https://twitter.com/gorira_banana13" target="_blank"><img v-bind:src="imageName1" ></img></a>
         </div>
-        </div>
+    </div>
 
     <script>
         new Vue({                                       //vue.js(Vueインスタンス)の設定
@@ -79,13 +96,15 @@
                 fileName8:'image/nagoya.png',
                 fileName9:'image/higashi.png',
                 fileName10:'image/otaku.png',
-                imageName:'image/typing.png',            //もっとタイピング練習する(外部サイト)
+                imageName:'image/typing.png',           //もっとタイピング練習する(外部サイト)
+                imageName1:'image/twitter.png',
+                myURL:'https://www.higashiyama.city.nagoya.jp/',
                 startFlg:"",                            //変数の定義 Flgはゲームが開始しているかどうかの判定に使う／初期値は空
                 current_question:"",                    //今現在の問題　初期値は空でquestions配列から問題を一つずつ取り出して表示 */   
-                questions:[                             //配列questionsからcurrent_questionに入るように →　124行目のmountedで実行する
+                questions:[                             //配列questionsからcurrent_questionに入るように →　129行目のmountedで実行する
                     '動物園に行って',    
                     'どうしても会いたい',
-                    'イケメンすぎるゴリラ',
+                    'イケメンすぎる彼',
                     '名前はシャバーニ',
                     '渋すぎるたたずまい',
                     'ゴリラとは思えないほど',
@@ -95,8 +114,8 @@
                     '女性に大人気'
                 ],
                 typeBox:"",                   //inputの値をデータで管理／初期値は空
-                current_question_counts:0,    //正解数/分子 初期状態は0 ／140行目で定義する
-                question_counts:0             //問題数/分母 初期状態は0 ／126行目mountedで分母数を取得しておく
+                current_question_counts:0,    //正解数/分子 初期状態は0 ／130行目で定義する
+                question_counts:0             //問題数/分母 初期状態は0 ／129行目mountedで分母数を取得しておく
             },
             //正解によって増えていくゲージ computedでデータの値を計算
             computed:{

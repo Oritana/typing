@@ -10,7 +10,7 @@ body{
     background-position: center;
     background-size: cover;
     width: 100%;
-    height: 100vh;
+    height:100vh;
     background-repeat:no-repeat;
 }
 
@@ -24,9 +24,34 @@ body{
     text-align:center;  /* 各要素を中央に配置 */
 }
 
-.title{
-    position:relative;  
-    font-size:48px;
+.title{                                 /* タイトル */
+    width: 100%;
+    position:relative;
+    }
+
+.text{                                  /* タイトルが左側からスライドイン */
+        font-size: inherit;
+        text-align: center;
+        margin-left: 50%;
+        transform: translateX(-200%);
+        opacity: 0;
+        animation: slide-in-anim 1.5s ease-out forwards;
+    }
+    
+@keyframes slide-in-anim {
+        20% {
+            opacity: 0;
+        }
+        60% {
+            transform: translateX(-45%);
+        }
+        75% {
+            transform: translateX(-52%);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(-50%);
+        }
     }
 
 .marker{                            /* タイトル部分マーカーの設定 */
@@ -92,8 +117,8 @@ body{
 }
 
 .typingimage{                               /* もっとタイピングを練習する(外部リンク)画像を設定 */
-    width:300px;
-    height:250px;
+    width:200px;
+    height:100x;
     text-align:center;
 }
 
@@ -101,8 +126,194 @@ body{
     opacity:0.5;
 }
 
-.footer{                               /* もっとタイピングを練習する(外部リンク)画像を設定 */
+.footer{                               
     width:400px;
-    height:270px;
+    height:300px;
     text-align:center;
 }
+
+img {
+    max-width: 100%;
+  }
+  /* body {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  } */
+  .apple1 {
+    width: 100px;
+    top:-180px;
+    position: absolute;                          /* 要素の配置方法を指定 */
+    animation-name: falldown;                    /* @keyframes アットルールの名前を指定 */
+    animation-duration: 7s;                      /* アニメーション周期が完了するまでの時間 */
+    animation-iteration-count: infinite;         /* アニメーションを実行する回数 */
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);   /* アニメーションが各サイクルの期間中にどのように進行するかを設定 */
+    animation-delay: .5s;                        /* アニメーションをいつ開始するかを指定 */
+  }
+
+  .apple2 {
+    width: 100px;
+    top:-180px;
+    padding-left:770px;
+    position: absolute;
+    animation-name: falldown;
+    animation-duration: 15s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation-delay: 2s;                              
+  }
+
+  .banana1 {
+    width: 100px;
+    top:-180px;
+    padding-left:200px;
+    position: absolute;
+    animation-name: falldown;
+    animation-duration: 11s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation-delay: .8s;
+  }
+
+  .banana2{
+    width: 100px;
+    top:-180px;
+    padding-left:500px;
+    position: absolute;
+    animation-name: falldown;
+    animation-duration: 19s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation-delay: .8s;
+  }
+
+
+  .leaf1 {
+    width: 100px;
+    top:-180px;
+    padding-left:600px;
+    position: absolute;
+    animation-name: falldown;
+    animation-duration: 30s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation-delay: 1s;
+  }
+  .leaf2 {
+    width: 100px;
+    top:-180px;
+    padding-left:880px;
+    position: absolute;
+    animation-name: falldown;
+    animation-duration: 40s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation-delay: .8s;
+  }
+
+  .leaf3 {
+    width: 100px;
+    top:-180px;
+    padding-left:900px;
+    position: absolute;
+    animation-name: falldown;
+    animation-duration: 60s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation-delay: .8s;
+  }
+
+  .leaf4 {
+    width: 100px;
+    top:-180px;
+    padding-left:70px;
+    position: absolute;
+    animation-name: falldown;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation-delay: .8s;
+  }
+
+  .leaf5 {
+    width: 100px;
+    top:-180px;
+    padding-left:70px;
+    position: absolute;
+    animation-name: falldown;
+    animation-duration: 100s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation-delay: .8s;
+  }
+
+  .leaf6 {
+    width: 100px;
+    top:-180px;
+    padding-left:70px;
+    position: absolute;
+    animation-name: falldown;
+    animation-duration: 30s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation-delay: .8s;
+  }
+
+  .leaf7 {
+    width: 100px;
+    top:-180px;
+    padding-left:70px;
+    position: absolute;
+    animation-name: falldown;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation-delay: .9s;
+  }
+  .leaf8 {
+    width: 100px;
+    top:-180px;
+    padding-left:70px;
+    position: absolute;
+    animation-name: falldown;
+    animation-duration: 45s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation-delay: .2s;
+  }
+  .momonga {
+    width: 100px;
+    left:700px;
+    padding-left:300px;
+    position: absolute;
+    animation-name: slide;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation-delay: .8s;
+  }
+
+ 
+
+  @keyframes falldown {
+    0% {
+      top: -50px;
+      transform: rotate(360deg);
+    }
+    100% {
+      top: 800px;
+    }
+  }
+
+  @keyframes slide {
+    0% {
+      left: 10px;
+      transform: rotate(40deg);
+    }
+    100% {
+      top: 800px;
+    }
+  }
+
+
+  
