@@ -15,13 +15,14 @@
 <body>
     <div id="app" >                         <!-- Vue.jsとつなげる要素 -->
         <div class="container">             <!-- 全体を囲う部分にcontainerクラスを設定 -->
-        <p class="apple1"><img src="image/apple.png"  /></p>      <!-- 背景画像の上でイラスをを落下させる -->
+        <!-- 背景画像の上でイラスをを落下させる -->
+        <p class="apple1"><img src="image/apple.png"  /></p>      
         <p class="apple2"><img src="image/apple.png"  /></p>
         <p class="banana1"><img src="image/banana.png"  /></p>
         <p class="banana2"><img src="image/banana.png"  /></p>
         <p class="leaf1"><img src="image/leaf1.png"  /></p>
         <p class="leaf2"><img src="image/leaf1.png"  /></p>
-        <p class="leaf3"><img src="image/leaf2.png"  /></p>
+        <p class="leaf3"><img src="image/leaf1.png"  /></p>
         <p class="leaf4"><img src="image/leaf2.png"  /></p>
         <p class="leaf5"><img src="image/leaf1.png"  /></p>
         <p class="leaf6"><img src="image/leaf2.png"  /></p>
@@ -73,13 +74,15 @@
         <img v-bind:src="fileName8"></img>
         <img v-bind:src="fileName9"></img>
         <img v-bind:src="fileName10"></img>
+        
+        </marquee direction="left">
+        <a v-bind:href="myURL" target="_blank">I miss シャバーニ</a><a href="https://twitter.com/gorira_banana13" target="_blank"><img v-bind:src="imageName1" ></img></a>
+        <!-- 葉を散らす -->
         <p class="leaf5"><img src="image/leaf1.png" alt="" /></p>
         <p class="leaf6"><img src="image/leaf1.png" alt="" /></p>
         <p class="leaf7"><img src="image/leaf2.png" alt="" /></p>
         <p class="leaf8"><img src="image/leaf2.png" alt="" /></p>
-        </marquee direction="left">
-        <a v-bind:href="myURL" target="_blank">I miss シャバーニ</a><a href="https://twitter.com/gorira_banana13" target="_blank"><img v-bind:src="imageName1" ></img></a>
-        </div>
+    </div>
     </div>
 
     <script>

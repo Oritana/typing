@@ -148,7 +148,7 @@ img {
     animation-duration: 7s;                      /* アニメーション周期が完了するまでの時間 */
     animation-iteration-count: infinite;         /* アニメーションを実行する回数 */
     animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);   /* アニメーションが各サイクルの期間中にどのように進行するかを設定 */
-    animation-delay: .5s;                        /* アニメーションをいつ開始するかを指定 */
+    animation-delay: 2s;                        /* アニメーションをいつ開始するかを指定 */
   }
 
   .apple2 {
@@ -160,7 +160,7 @@ img {
     animation-duration: 15s;
     animation-iteration-count: infinite;
     animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    animation-delay: 2s;                              
+    animation-delay: 1s;                              
   }
 
   .banana1 {
@@ -172,7 +172,7 @@ img {
     animation-duration: 11s;
     animation-iteration-count: infinite;
     animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    animation-delay: .8s;
+    animation-delay: 2s;
   }
 
   .banana2{
@@ -184,7 +184,7 @@ img {
     animation-duration: 19s;
     animation-iteration-count: infinite;
     animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    animation-delay: .8s;
+    animation-delay: 1s;
   }
 
 
@@ -208,7 +208,7 @@ img {
     animation-duration: 40s;
     animation-iteration-count: infinite;
     animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    animation-delay: .8s;
+    animation-delay: 2s;
   }
 
   .leaf3 {
@@ -220,7 +220,7 @@ img {
     animation-duration: 60s;
     animation-iteration-count: infinite;
     animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    animation-delay: .8s;
+    animation-delay: 3s;
   }
 
   .leaf4 {
@@ -232,7 +232,7 @@ img {
     animation-duration: 20s;
     animation-iteration-count: infinite;
     animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    animation-delay: .8s;
+    animation-delay: 4s;
   }
 
   .leaf5 {
@@ -244,7 +244,7 @@ img {
     animation-duration: 100s;
     animation-iteration-count: infinite;
     animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    animation-delay: .8s;
+    animation-delay: 7s;
   }
 
   .leaf6 {
@@ -253,10 +253,10 @@ img {
     padding-left:70px;
     position: absolute;
     animation-name: falldown;
-    animation-duration: 30s;
+    animation-duration: 55s;
     animation-iteration-count: infinite;
     animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    animation-delay: .8s;
+    animation-delay: 10s;
   }
 
   .leaf7 {
@@ -265,10 +265,10 @@ img {
     padding-left:70px;
     position: absolute;
     animation-name: falldown;
-    animation-duration: 20s;
+    animation-duration: 10s;
     animation-iteration-count: infinite;
     animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    animation-delay: .9s;
+    animation-delay: 11s;
   }
   .leaf8 {
     width: 100px;
@@ -279,18 +279,18 @@ img {
     animation-duration: 45s;
     animation-iteration-count: infinite;
     animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    animation-delay: .2s;
+    animation-delay: 4s;
   }
   .momonga {
     width: 100px;
-    left:700px;
-    padding-left:300px;
+    left:1000px;
+    padding-left:700px;
     position: absolute;
     animation-name: slide;
     animation-duration: 10s;
     animation-iteration-count: infinite;
     animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    animation-delay: .8s;
+    animation-delay: 2s;
   }
 
  
